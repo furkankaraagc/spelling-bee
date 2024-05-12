@@ -11,7 +11,7 @@ export default async function Home() {
 
   return (
     <main>
-      <Wrapper />
+      <Wrapper selectedLetters={selectedLetters} />
       {/* <h1>{t('title')}</h1> */}
     </main>
   );

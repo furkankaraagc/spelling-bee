@@ -1,3 +1,14 @@
 {
-  "data": [{"abcdef": ["abel", "bale"]}, {"abcdefg": ["ssad", "asdasd"]}]
+  "data": [
+    {
+      "words": ["abel", "bale"],
+      "letters": ["a", "b", "e", "l", "x"],
+      "id": 1
+    },
+    {
+      "words": ["xtasd", "bale"],
+      "letters": ["x", "y", "e", "l"],
+      "id": 2
+    }
+  ]
 }

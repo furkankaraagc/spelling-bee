@@ -27,6 +27,7 @@ const useTimer = () => {
     const seconds0 = seconds < 10 ? `0${seconds}` : seconds;
     return `${minutes0}:${seconds0}`;
   };
+
   return {currentTime, isGameStarted, startTimer, calculateTime};
 };
 export default useTimer;
