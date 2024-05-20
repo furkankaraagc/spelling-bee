@@ -11,7 +11,7 @@ interface Props {
 
 const SingleHive = ({style, text, fill, setInputValue, inputRef}: Props) => {
   const [active, setActive] = useState(false);
-  const onClickHandler = (e: React.MouseEvent<SVGPolygonElement>) => {
+  const onClickHandler = (e: any) => {
     setInputValue((prev) => prev + e.target.id);
   };
   const onClickHandler2 = (e: any) => {
