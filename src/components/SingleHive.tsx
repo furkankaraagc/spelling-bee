@@ -16,7 +16,6 @@ const SingleHive = ({style, text, fill, setInputValue, inputRef}: Props) => {
   };
   const onClickHandler2 = (e: any) => {
     e.stopPropagation();
-
     setInputValue((prev) => prev + e.target.textContent);
   };
   return (
@@ -27,7 +26,8 @@ const SingleHive = ({style, text, fill, setInputValue, inputRef}: Props) => {
       data-testid='hive-cell-outer'
     >
       <polygon
-        id={text.toUpperCase()}
+        data-text={text?.toUpperCase()}
+        id={text?.toUpperCase()}
         onClick={onClickHandler}
         onMouseDown={(e) => {
           setActive(true);
@@ -46,11 +46,11 @@ const SingleHive = ({style, text, fill, setInputValue, inputRef}: Props) => {
         onClick={onClickHandler2}
         onMouseUp={() => setActive(false)}
         className='text-white text-2xl font-bold cursor-pointer'
-        x='43%'
+        x='50%'
         y='55%'
-        // d60'0.10em'
+        textAnchor='middle'
       >
-        {text.toUpperCase()}
+        {text?.toUpperCase()}
       </text>
     </svg>
   );

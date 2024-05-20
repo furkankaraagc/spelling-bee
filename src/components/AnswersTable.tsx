@@ -10,7 +10,7 @@ interface Props {
 const AnswersTable = ({answers, t}: Props) => {
   const [isVisible, setIsVisible] = useState(false);
   return (
-    <div className='border rounded-xl px-8'>
+    <div className='border rounded-xl px-8 py-3'>
       <h1
         onClick={() => setIsVisible(!isVisible)}
         className=' font-medium border-b cursor-pointer'

@@ -23,15 +23,14 @@ export const LocalSwitcher = () => {
   };
 
   return (
-    <div>
-      <select
-        disabled={isPending}
-        defaultValue={localActive}
-        onChange={localChangeHandler}
-      >
-        <option value='en'>English</option>
-        <option value='tr'>Turkish</option>
-      </select>
-    </div>
+    <select
+      className='border-2 rounded-lg p-2  cursor-pointer'
+      disabled={isPending}
+      defaultValue={localActive}
+      onChange={localChangeHandler}
+    >
+      <option value='en'>English</option>
+      <option value='tr'>Turkish</option>
+    </select>
   );
 };

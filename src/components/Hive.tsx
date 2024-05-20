@@ -1,3 +1,4 @@
+import {useEffect, useState} from 'react';
 import SingleHive from './SingleHive';
 
 interface Props {
@@ -12,6 +13,17 @@ interface Props {
 }
 
 const Hive = ({selectedLetters, setInputValue, inputRef}: Props) => {
+  const [outerLetters, setOuterLetters] = useState<string[]>([]);
+
+  useEffect(() => {
+    const array = selectedLetters.outerLetters;
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    setOuterLetters(array);
+  }, []);
+
   return (
     <main className='relative  w-[300px] h-[300px] '>
       <SingleHive
@@ -22,7 +34,7 @@ const Hive = ({selectedLetters, setInputValue, inputRef}: Props) => {
           marginLeft: 'auto',
           marginRight: 'auto',
         }}
-        text={selectedLetters.outerLetters[0]}
+        text={outerLetters[0]}
         fill='lightgray'
         setInputValue={setInputValue}
         inputRef={inputRef}
@@ -48,35 +60,35 @@ const Hive = ({selectedLetters, setInputValue, inputRef}: Props) => {
           marginLeft: 'auto',
           marginRight: 'auto',
         }}
-        text={selectedLetters.outerLetters[1]}
+        text={outerLetters[1]}
         fill='lightgray'
         setInputValue={setInputValue}
         inputRef={inputRef}
       />
       <SingleHive
         style={{top: 86 / 2, left: 22, right: 0}}
-        text={selectedLetters.outerLetters[2]}
+        text={outerLetters[2]}
         fill='lightgray'
         setInputValue={setInputValue}
         inputRef={inputRef}
       />
       <SingleHive
         style={{top: 86 / 2, left: 176, right: 0}}
-        text={selectedLetters.outerLetters[3]}
+        text={outerLetters[3]}
         fill='lightgray'
         setInputValue={setInputValue}
         inputRef={inputRef}
       />
       <SingleHive
         style={{top: 86 * 1.5, left: 22, right: 0}}
-        text={selectedLetters.outerLetters[4]}
+        text={outerLetters[4]}
         fill='lightgray'
         setInputValue={setInputValue}
         inputRef={inputRef}
       />
       <SingleHive
         style={{top: 86 * 1.5, left: 176, right: 0}}
-        text={selectedLetters.outerLetters[5]}
+        text={outerLetters[5]}
         fill='lightgray'
         setInputValue={setInputValue}
         inputRef={inputRef}

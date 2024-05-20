@@ -1,25 +1,25 @@
 import {reduceDuration, setIsGameStarted} from '@/redux/features/hiveSlice';
 import {RootState} from '@/redux/store';
+import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 const useTimer = () => {
-  const {isGameStarted, duration} = useSelector(
+  const {isGameStarted, duration, isGameFinished, gameSession} = useSelector(
     (state: RootState) => state.hiveSlice.value
   );
   const dispatch = useDispatch();
-  let intervalId: any;
+  let intervalId: NodeJS.Timeout;
+  useEffect(() => {
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [isGameFinished, gameSession]);
 
   const startTimer = () => {
     if (!isGameStarted) {
       dispatch(setIsGameStarted(true));
       intervalId = setInterval(() => {
-        if (duration > 0) {
-          dispatch(reduceDuration());
-        } else {
-          dispatch(setIsGameStarted(false));
-          clearInterval(intervalId);
-          return;
-        }
+        dispatch(reduceDuration());
       }, 1000);
     }
   };

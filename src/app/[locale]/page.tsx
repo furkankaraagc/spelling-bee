@@ -25,9 +25,9 @@ export default async function Home() {
           <h1 className='font-bold text-3xl'>Spelling Bee</h1>
           <LocalSwitcher />
         </section>
-        <section className='flex-col p-20'>
+        <section className='lg:p-16 md:p-10  pt-5'>
           <TimerAndScore t={t.raw('Score')} />
-          <section className=' sm:flex gap-4'>
+          <section className=' sm:flex  gap-4'>
             <HiveWrapper selectedLetters={selectedLetters} t={t.raw('Input')} />
             <FoundWordsTable t={t.raw('Table')} />
             <AnswersTable

@@ -16,7 +16,7 @@
     "Input": {
       "placeholder": "Bir kelime girin",
       "title": "Gönder",
-      "correct": "Doğru",
+      "correct": "Doğru +saniye",
       "errors": {
         "error1": "Çok kısa",
         "error2": "Çok uzun",
@@ -30,8 +30,8 @@
     "Table": {
       "title": "Bulduğunuz kelime sayısı",
       "answers": "cevapları",
-      "close": "Kapat",
-      "show": "Göster"
+      "close": "Kapat tüm",
+      "show": "Göster tüm"
     }
   }
 }

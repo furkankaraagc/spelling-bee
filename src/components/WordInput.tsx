@@ -1,6 +1,10 @@
 'use client';
 
-import {addMoreTime, addToFoundWords} from '@/redux/features/hiveSlice';
+import {
+  addMoreTime,
+  addToFoundWords,
+  incrementScore,
+} from '@/redux/features/hiveSlice';
 import {RootState} from '@/redux/store';
 import toast from 'react-hot-toast';
 import {useDispatch, useSelector} from 'react-redux';
@@ -24,10 +28,10 @@ const WordInput = ({
   inputValue,
   setInputValue,
 }: Props) => {
-  const {foundWords} = useSelector((state: RootState) => state.hiveSlice.value);
+  const {foundWords, isGameFinished} = useSelector(
+    (state: RootState) => state.hiveSlice.value
+  );
   const dispatch = useDispatch();
-
-  // const [foundWords, setFoundWords] = useState<string[]>([]);
 
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,6 +46,7 @@ const WordInput = ({
     if (selectedLetters.answers.includes(inputValue.toLowerCase())) {
       dispatch(addMoreTime(15));
       dispatch(addToFoundWords(inputValue));
+      dispatch(incrementScore(inputValue.length));
       toast.success(t.correct, {duration: 1000});
     } else {
       toast.error(t.errors.error4, {duration: 1000});
@@ -57,7 +62,7 @@ const WordInput = ({
   return (
     <form
       onSubmit={onSubmitHandler}
-      className='h-20 flex border justify-between items-center'
+      className='h-20 flex  justify-between items-center'
     >
       <input
         onBlur={(e) => e.target.focus()}
@@ -71,7 +76,10 @@ const WordInput = ({
       />
 
       <button
-        className='hover:opacity-95 active:opacity-90 active:scale-95 transition-all  border-2 text-md rounded-lg px-5 py-3 bg-[#f7da21]'
+        disabled={isGameFinished}
+        className={`hover:opacity-95 active:opacity-90 active:scale-95 transition-all  border-2 text-md rounded-lg px-5 py-3 bg-[#f7da21] ${
+          isGameFinished && 'opacity-60 pointer-events-none	'
+        }`}
         type='submit'
       >
         {t.title}

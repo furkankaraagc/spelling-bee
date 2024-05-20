@@ -1,45 +1,21 @@
 'use client';
-import {reduceDuration, setIsGameStarted} from '@/redux/features/hiveSlice';
-import {RootState} from '@/redux/store';
+import useTimer from '@/hooks/useTimer';
 import Dialog from '@mui/material/Dialog';
-import {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {useState} from 'react';
+import {useDispatch} from 'react-redux';
 interface Props {
   t: any;
 }
 
 const HowToPlay = ({t}: Props) => {
   const [open, setOpen] = useState(true);
-  const {isGameStarted, duration} = useSelector(
-    (state: RootState) => state.hiveSlice.value
-  );
+
   const dispatch = useDispatch();
+  const {startTimer} = useTimer();
 
   const handleStart = () => {
     setOpen(false);
     startTimer();
-  };
-  let intervalId: any;
-
-  useEffect(() => {
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
-
-  const startTimer = () => {
-    if (!isGameStarted) {
-      dispatch(setIsGameStarted(true));
-      intervalId = setInterval(() => {
-        if (duration > 0) {
-          dispatch(reduceDuration());
-        } else {
-          dispatch(setIsGameStarted(false));
-          clearInterval(intervalId);
-          return;
-        }
-      }, 1000);
-    }
   };
 
   return (
