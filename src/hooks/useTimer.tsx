@@ -1,24 +1,30 @@
-import {useState} from 'react';
+import {reduceDuration, setIsGameStarted} from '@/redux/features/hiveSlice';
+import {RootState} from '@/redux/store';
+import {useDispatch, useSelector} from 'react-redux';
 
 const useTimer = () => {
-  const [currentTime, setCurrentTime] = useState(500);
-  const [isGameStarted, setIsGameStarted] = useState(false);
+  const {isGameStarted, duration} = useSelector(
+    (state: RootState) => state.hiveSlice.value
+  );
+  const dispatch = useDispatch();
+  let intervalId: any;
 
   const startTimer = () => {
     if (!isGameStarted) {
-      setIsGameStarted(true);
-      const intervalId = setInterval(() => {
-        setCurrentTime((prev) => {
-          if (prev > 0) {
-            return prev - 1;
-          } else {
-            clearInterval(intervalId);
-            setIsGameStarted(false);
-            return 0;
-          }
-        });
+      dispatch(setIsGameStarted(true));
+      intervalId = setInterval(() => {
+        if (duration > 0) {
+          dispatch(reduceDuration());
+        } else {
+          dispatch(setIsGameStarted(false));
+          clearInterval(intervalId);
+          return;
+        }
       }, 1000);
     }
+  };
+  const resetTimer = () => {
+    clearInterval(intervalId);
   };
   const calculateTime = (value: number) => {
     const minutes = Math.floor(value / 60);
@@ -27,9 +33,7 @@ const useTimer = () => {
     const seconds0 = seconds < 10 ? `0${seconds}` : seconds;
     return `${minutes0}:${seconds0}`;
   };
-  const addMoreTime = (value: number) => {
-    setCurrentTime((prev) => prev + value);
-  };
-  return {currentTime, isGameStarted, startTimer, calculateTime, addMoreTime};
+
+  return {calculateTime, startTimer, resetTimer};
 };
 export default useTimer;

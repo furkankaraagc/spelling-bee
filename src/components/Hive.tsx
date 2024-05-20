@@ -12,9 +12,8 @@ interface Props {
 }
 
 const Hive = ({selectedLetters, setInputValue, inputRef}: Props) => {
-  console.log(selectedLetters);
   return (
-    <main className='relative border w-[300px] h-[300px] mx-auto'>
+    <main className='relative  w-[300px] h-[300px] '>
       <SingleHive
         style={{
           top: 0,

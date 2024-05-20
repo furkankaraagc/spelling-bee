@@ -1,15 +1,37 @@
 {
   "NotFoundPage": {
-    "title": "Page not found"
+    "title": "Sayfa bulunamadı"
   },
   "Home": {
     "HowToPlay": {
-      "title": "How to play"
+      "start": "Başla",
+      "title": "Nasıl oynanır",
+      "title2": "Kovandan harfler kullanarak kelimeler oluşturun",
+      "line1": "Kelimeler en az 4 harf içermelidir",
+      "line2": "Kelimeler merkez harfi içermelidir",
+      "line3": "Harfler birden fazla kullanılabilir",
+      "line4": "4 harfli kelimeler 1 puan değerindedir",
+      "line5": "Daha uzun kelimeler her harf başına 1 puan kazanır"
     },
-    "SubmitErrors": {
-      "error1": "Word must be at least 4 characters long",
-      "error2": "Word already found",
-      "error3": "Word not found"
+    "Input": {
+      "placeholder": "Bir kelime girin",
+      "title": "Gönder",
+      "correct": "Doğru",
+      "errors": {
+        "error1": "Çok kısa",
+        "error2": "Çok uzun",
+        "error3": "Kelime zaten bulundu",
+        "error4": "Kelime bulunamadı"
+      }
+    },
+    "Score": {
+      "title": "Puan"
+    },
+    "Table": {
+      "title": "Bulduğunuz kelime sayısı",
+      "answers": "cevapları",
+      "close": "Kapat",
+      "show": "Göster"
     }
   }
 }

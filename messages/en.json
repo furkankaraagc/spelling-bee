@@ -4,12 +4,35 @@
   },
   "Home": {
     "HowToPlay": {
-      "title": "How to play"
+      "start": "Start",
+      "title": "How to play",
+      "title2": "Create words using letters from the hive.",
+      "line1": "Words must contain at least 4 letters",
+      "line2": "Words must include the center letter",
+      "line3": "Letters can be used more than once",
+      "line4": "4-letter words are worth 1 point each",
+      "line5": "Longer words earn 1 point per letter"
     },
-    "SubmitErrors": {
-      "error1": "Word must be at least 4 characters long",
-      "error2": "Word already found",
-      "error3": "Word not found"
+
+    "Input": {
+      "placeholder": "Enter a word",
+      "title": "Submit",
+      "correct": "Correct",
+      "errors": {
+        "error1": "Too short",
+        "error2": "Too long",
+        "error3": "Word already found",
+        "error4": "Word not found"
+      }
+    },
+    "Score": {
+      "title": "Score"
+    },
+    "Table": {
+      "title": "Number of words you found",
+      "answers": "the answers",
+      "close": "Close",
+      "show": "Show"
     }
   }
 }
