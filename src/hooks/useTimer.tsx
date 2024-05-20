@@ -1,7 +1,7 @@
 import {useState} from 'react';
 
 const useTimer = () => {
-  const [currentTime, setCurrentTime] = useState(10);
+  const [currentTime, setCurrentTime] = useState(500);
   const [isGameStarted, setIsGameStarted] = useState(false);
 
   const startTimer = () => {
@@ -27,7 +27,9 @@ const useTimer = () => {
     const seconds0 = seconds < 10 ? `0${seconds}` : seconds;
     return `${minutes0}:${seconds0}`;
   };
-
-  return {currentTime, isGameStarted, startTimer, calculateTime};
+  const addMoreTime = (value: number) => {
+    setCurrentTime((prev) => prev + value);
+  };
+  return {currentTime, isGameStarted, startTimer, calculateTime, addMoreTime};
 };
 export default useTimer;

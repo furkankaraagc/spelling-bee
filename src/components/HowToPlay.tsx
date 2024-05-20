@@ -14,11 +14,7 @@ const HowToPlay = ({startTimer}: Props) => {
   };
 
   return (
-    <Dialog
-      open={open}
-      aria-labelledby='alert-dialog-title'
-      aria-describedby='alert-dialog-description'
-    >
+    <Dialog open={open}>
       <h1>How to play</h1>
       <button type='button' onClick={handleStart}>
         Start the game

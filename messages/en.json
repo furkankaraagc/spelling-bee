@@ -1,0 +1,15 @@
+{
+  "NotFoundPage": {
+    "title": "Page not found"
+  },
+  "Home": {
+    "HowToPlay": {
+      "title": "How to play"
+    },
+    "SubmitErrors": {
+      "error1": "Word must be at least 4 characters long",
+      "error2": "Word already found",
+      "error3": "Word not found"
+    }
+  }
+}

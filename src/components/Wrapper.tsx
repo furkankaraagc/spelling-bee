@@ -1,24 +1,17 @@
 'use client';
 import useTimer from '@/hooks/useTimer';
 import HowToPlay from './HowToPlay';
-import TimerDisplay from './TimerDisplay';
+import Timer from './Timer';
 
 interface Props {
-  selectedLetters: string[];
+  t: any;
 }
-const Wrapper = ({selectedLetters}: Props) => {
-  const {startTimer, currentTime, calculateTime} = useTimer();
-  console.log(selectedLetters);
+const Wrapper = ({t}: Props) => {
+  const {startTimer, currentTime, calculateTime, addMoreTime} = useTimer();
   return (
     <main>
       <HowToPlay startTimer={startTimer} />
-      <TimerDisplay
-        calculateTime={calculateTime}
-        currentTime={currentTime}
-        selectedLetters={selectedLetters}
-      />
-
-      {/* <h1>{t('title')}</h1> */}
+      <Timer calculateTime={calculateTime} currentTime={currentTime} />
     </main>
   );
 };
