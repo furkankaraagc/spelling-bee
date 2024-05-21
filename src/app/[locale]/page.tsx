@@ -4,17 +4,19 @@ import HiveWrapper from '@/components/HiveWrapper';
 import HowToPlay from '@/components/HowToPlay';
 import {LocalSwitcher} from '@/components/LocalSwitcher';
 import TimerAndScore from '@/components/TimerAndScore';
-import {promises as fs} from 'fs';
+// import {promises as fs} from 'fs';
+import fs from 'fs';
 import {getLocale, getTranslations} from 'next-intl/server';
+import path from 'path';
 
 export default async function Home() {
   const t = await getTranslations('Home');
   const locale = await getLocale();
-  const file = await fs.readFile(
-    process.cwd() + `/src/mock/data-${locale}.json`,
-    'utf8'
-  );
+  const filePath = path.join(process.cwd(), `/src/mock/data-${locale}.json`);
+  const file = fs.readFileSync(filePath, 'utf8');
+  console.log(file);
   const data = JSON.parse(file).data;
+
   const randomIndex = Math.floor(Math.random() * data.length);
   const selectedLetters = data[randomIndex];
   return (
